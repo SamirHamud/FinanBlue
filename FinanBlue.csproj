@@ -22,8 +22,6 @@
 
   <ItemGroup>
     <Folder Include="Helpers\" />
-    <Folder Include="Repository\InterfaceRepository\" />
-    <Folder Include="Services\InterfaceService\" />
   </ItemGroup>
 
 

@@ -9,20 +9,21 @@ using System.Threading.Tasks;
 
 namespace FinanBlue.Controllers
 {
-    public class EmpresaController : Controller
+    public class CompraController : Controller
     {
-        private readonly IEmpresaService _empresaService;
-        public EmpresaController(IEmpresaService empresaService)
+        private readonly ICompraService _compraService;
+        public CompraController(ICompraService compraService)
         {
-            _empresaService = empresaService;
+            _compraService = compraService;
         }
-        [HttpGet("ListEmpresa")]
-        public List<EmpresaResponse> ListEmpresa()
+
+        [HttpGet("ListCompra")]
+        public List<CompraResponse> ListCompra()
         {
             return null;
         }
-        [HttpPost("CreateEmpresa")]
-        public EmpresaResponse CreatePost([FromBody] EmpresaRequest request)
+        [HttpPost("CreateCompra")]
+        public CompraResponse CreateCompra([FromBody] CompraRequest request)
         {
             return null;
             //return "";

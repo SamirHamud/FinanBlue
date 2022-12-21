@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FinanBlue.Repository.InterfaceRepository
+namespace FinanBlue.Models
 {
-   public interface IEmpresaRepository
+    public class CompraEntity
     {
     }
 }

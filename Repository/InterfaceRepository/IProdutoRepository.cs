@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace FinanBlue.Repository.InterfaceRepository
 {
-    interface IProdutoRepository
+   public interface IProdutoRepository
     {
     }
 }

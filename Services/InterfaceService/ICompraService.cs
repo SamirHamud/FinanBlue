@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FinanBlue.Repository.InterfaceRepository
+namespace FinanBlue.Services.InterfaceService
 {
-   public interface IEmpresaRepository
+   public interface ICompraService
     {
     }
 }
