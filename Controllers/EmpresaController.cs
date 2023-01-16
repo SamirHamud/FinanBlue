@@ -1,16 +1,35 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FinanBlue.Models.Request;
+using FinanBlue.Models.Response;
+using FinanBlue.Services.InterfaceService;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FinanBlue.Controllers
 {
     public class EmpresaController : Controller
     {
-        public IActionResult Index()
+        private readonly IEmpresaService _empresaService;
+        public EmpresaController(IEmpresaService empresaService)
         {
-            return View();
+            _empresaService = empresaService;
+        }
+        [HttpGet("ListEmpresa")]
+        public List<EmpresaResponse> ListEmpresa()
+        {
+            return _empresaService.ListEmpresa();
+        }
+        [HttpPost("CreateEmpresa")]
+        public ActionResult CreateEmpresa([FromBody] EmpresaRequest request)
+        {
+            try
+            {
+                return new CreatedResult("", _empresaService.CreateEmpresa(request));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

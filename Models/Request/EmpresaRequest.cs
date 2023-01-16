@@ -7,5 +7,7 @@ namespace FinanBlue.Models.Request
 {
     public class EmpresaRequest
     {
+        public string nome_empresa { get; set; }
+        public string cnpj_empresa { get; set; }
     }
 }

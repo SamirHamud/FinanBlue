@@ -15,10 +15,23 @@ namespace FinanBlue.Controllers
         {
             _produtoService = produtoService;
         }
-        [HttpGet("ListProdt")]
-        public List<ProdutoResponse> ListPost()
+
+        [HttpGet("ListProduto")]
+        public List<ProdutoResponse> ListProduto()
         {
-            return null;
+            return _produtoService.ListProduto();
+        }
+        [HttpPost("CreateProduto")]
+        public ActionResult CreateProduto([FromBody] ProdutoRequest request)
+        {
+            try
+            {
+                return new CreatedResult("", _produtoService.CreateProduto(request));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

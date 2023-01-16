@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace FinanBlue.Services.InterfaceService
 {
-    public interface IEmpresaService
+    public interface ICompraService
     {
-        List<EmpresaResponse> ListEmpresa();
-        EmpresaResponse CreateEmpresa(EmpresaRequest request);
+        Task<List<CompraResponse>> ListCompraAsync();
+        Task<CompraResponse> CreateCompraAsync(CompraRequest request);
     }
 }

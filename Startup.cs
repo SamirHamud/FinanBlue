@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -16,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace FinanBlue
 {
@@ -32,8 +34,8 @@ namespace FinanBlue
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddAutoMapper(typeof(Startup));
 
-            services.AddControllers();
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
@@ -67,20 +69,18 @@ namespace FinanBlue
                 });
             });
 
+            services.AddEntityFrameworkNpgsql()
+             .AddDbContext<AppDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("ConnectionDB")));
+
             services.AddTransient<IProdutoService, ProdutoService>();
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
 
             services.AddTransient<IEmpresaService, EmpresaService>();
             services.AddTransient<IEmpresaRepository, EmpresaRepository>();
 
-            //services.AddTransient<IOngRepository, OngRepository>();
-            //services.AddTransient<IOngService, OngService>();
+            services.AddTransient<ICompraRepository, CompraRepository>();
+            services.AddTransient<ICompraService, CompraService>();
 
-            //services.AddTransient<IPostRepository, PostRepository>();
-            //services.AddTransient<IPostService, PostService>();
-
-            //services.AddDbContext<AppDbContext>(options =>
-            //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

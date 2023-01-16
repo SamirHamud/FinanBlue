@@ -7,5 +7,9 @@ namespace FinanBlue.Models
 {
     public class ProdutoResponse
     {
+        public int cod_produto { get; set; }
+        public string nome_produto { get; set; }
+        public double quantidade { get; set; }
+        public decimal valor_produto { get; set; }
     }
 }
