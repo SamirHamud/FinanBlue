@@ -18,15 +18,22 @@ namespace FinanBlue.Controllers
         }
 
         [HttpGet("ListCompra")]
-        public List<CompraResponse> ListCompra()
+        public async Task<ActionResult> ListCompraAsync()
         {
-            return null;
+            return Ok(await _compraService.ListCompraAsync());
+
         }
         [HttpPost("CreateCompra")]
-        public CompraResponse CreateCompra([FromBody] CompraRequest request)
+        public async Task<ActionResult> CreateCompra([FromBody] CompraRequest request)
         {
-            return null;
-            //return "";
+            try
+            {
+                return new CreatedResult("", await _compraService.CreateCompraAsync(request));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

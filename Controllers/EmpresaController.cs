@@ -4,8 +4,6 @@ using FinanBlue.Services.InterfaceService;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FinanBlue.Controllers
 {
@@ -19,13 +17,19 @@ namespace FinanBlue.Controllers
         [HttpGet("ListEmpresa")]
         public List<EmpresaResponse> ListEmpresa()
         {
-            return null;
+            return _empresaService.ListEmpresa();
         }
         [HttpPost("CreateEmpresa")]
-        public EmpresaResponse CreatePost([FromBody] EmpresaRequest request)
+        public ActionResult CreateEmpresa([FromBody] EmpresaRequest request)
         {
-            return null;
-            //return "";
+            try
+            {
+                return new CreatedResult("", _empresaService.CreateEmpresa(request));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

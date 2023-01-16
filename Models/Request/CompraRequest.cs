@@ -7,5 +7,8 @@ namespace FinanBlue.Models.Request
 {
     public class CompraRequest
     {
+        public int cod_produto { get; set; }
+        public int cod_empresa { get; set; }
+        public double quantidade_compra { get; set; }
     }
 }

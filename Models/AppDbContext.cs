@@ -9,7 +9,7 @@ namespace FinanBlue.Models
     public class AppDbContext : DbContext
     {
         public virtual DbSet<EmpresaEntity> EmpresaEntity { get; set; }
-        public virtual DbSet<ProdutoRequest> ProdutoEntity { get; set; }
+        public virtual DbSet<ProdutoEntity> ProdutoEntity { get; set; }
         public virtual DbSet<CompraEntity> CompraEntity { get; set; }
 
 

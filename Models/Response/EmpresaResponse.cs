@@ -7,5 +7,8 @@ namespace FinanBlue.Models.Response
 {
     public class EmpresaResponse
     {
+        public int cod_empresa { get; set; }
+        public string nome_empresa { get; set; }
+        public string cnpj_empresa { get; set; }
     }
 }
