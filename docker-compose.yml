@@ -10,9 +10,11 @@ services:
       - 5432:5432
     volumes:
       - data:/var/lib/postgresql
-      #- ./postgres-data:/var/lib/postgresql/data
-          # copy the sql script to create tables
-      #- ./sql:/docker-entrypoint-initdb.d/create_tables_postgres.sql
       - ./sql/create_tables_postgres.sql:/docker-entrypoint-initdb.d/create_tables_postgres.sql
-          # copy the sql script to fill tables
-          #- ./sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
+
+  finanblue:
+    image: finanblue
+    build:
+      context: .
+    ports:
+      - "20000:80"
